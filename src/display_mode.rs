@@ -8,7 +8,7 @@ pub struct DisplayMode {
 
 impl Default for DisplayMode {
 	fn default() -> DisplayMode {
-		DisplayMode { cursor_visibility: Cursor::Visible, cursor_blink: CursorBlink::On, display: Display::On }
+		DisplayMode { cursor_visibility: Cursor::Invisible, cursor_blink: CursorBlink::Off, display: Display::On }
 	}
 }
 

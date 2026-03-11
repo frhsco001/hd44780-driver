@@ -222,13 +222,14 @@ fn init_4bit<B: DataBus, D: DelayNs>(bus: &mut B, entry_mode: &EntryMode, delay:
 	// Wait for the command to be processed
 	delay.delay_us(100);
 
+	// Function Set: 4-Bit mode, 2-line mode, 5x8 dot
 	bus.write(0x28, false, delay)?;
 
 	// Wait for the command to be processed
 	delay.delay_us(100);
 
-	// Clear Display
-	bus.write(0x0E, false, delay)?;
+	// Display: Display on, cursor off, Blink off
+	bus.write(0x0C, false, delay)?;
 
 	// Wait for the command to be processed
 	delay.delay_us(100);
@@ -245,7 +246,8 @@ fn init_4bit<B: DataBus, D: DelayNs>(bus: &mut B, entry_mode: &EntryMode, delay:
 	// Wait for the command to be processed
 	delay.delay_us(100);
 
-	bus.write(0x80, false, delay)?;
+	// Return home
+	bus.write(0x02, false, delay)?;
 
 	// Wait for the command to be processed
 	delay.delay_us(100);
